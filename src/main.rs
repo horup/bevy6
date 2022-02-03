@@ -85,11 +85,6 @@ mod keyboard_system;
 mod mouse_system;
 mod window_system;
 
-
-// events
-mod app_event;
-pub use app_event::*;
-
 // components
 
 // resources
@@ -111,8 +106,5 @@ fn main() {
     .add_system(mouse_system::mouse_system)
     
     .add_system(window_system::window_system)
-
-
-    .add_event::<AppEvent>()
     .run();
 }

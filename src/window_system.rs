@@ -1,19 +1,14 @@
-use crate::AppEvent;
+use crate::{AppState};
 use bevy::{
-    prelude::{EventReader, ResMut},
+    prelude::{EventReader, ResMut, DetectChanges},
     window::Windows,
 };
 
-pub fn window_system(mut app_event_reader: EventReader<AppEvent>, mut windows: ResMut<Windows>) {
+pub fn window_system(app_state:ResMut<AppState>, mut windows: ResMut<Windows>) {
     if let Some(primary) = windows.get_primary_mut() {
-        for e in app_event_reader.iter() {
-            match e {
-                AppEvent::LockInput(b) => {
-                    primary.set_cursor_lock_mode(*b);
-                    primary.set_cursor_visibility(!b);
-                },
-                _=>{}
-            }
+        if app_state.is_changed() {
+            primary.set_cursor_visibility(!app_state.input_locked);
+            primary.set_cursor_lock_mode(app_state.input_locked);
         }
     }
 }

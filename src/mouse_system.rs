@@ -4,15 +4,17 @@ use bevy::{
     window::Windows,
 };
 
-use crate::AppEvent;
+use crate::{AppState};
 
 pub fn mouse_system(
     mut mouse_button_input_events: EventReader<MouseButtonInput>, 
-    mut app_event_writer: EventWriter<AppEvent>
+    mut app_state:ResMut<AppState>
 ) {
     for e in mouse_button_input_events.iter() {
         if e.button == MouseButton::Left && e.state == ElementState::Pressed {
-           app_event_writer.send(AppEvent::LockInput(true));
+            if app_state.input_locked == false {
+                app_state.input_locked = true;
+            }
         }
     }
 }
