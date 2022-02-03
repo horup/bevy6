@@ -1,3 +1,5 @@
+#![allow(warnings)]
+
 use bevy::{prelude::*, input::mouse::MouseButtonInput};
 
 #[derive(Component, Debug)]
@@ -69,18 +71,48 @@ fn keyboard_input_system(mut q:Query<PlayerEntity>, keyboard_input: Res<Input<Ke
         }
 
         let mut v = transform.rotation * v;
-        v.y = 0.0;
+        //v.y = 0.0;
         let speed = 10.0;
         transform.translation += v * time.delta_seconds() * speed;
     }
 }
 
+mod app_state;
+pub use app_state::*;
+
+// systems
+mod keyboard_system;
+mod mouse_system;
+mod window_system;
+
+
+// events
+mod app_event;
+pub use app_event::*;
+
+// components
+
+// resources
 
 fn main() {
     App::new()
+    .insert_resource(WindowDescriptor {
+        title:"Bevy 0.6".to_string(),
+        cursor_locked:false,
+        cursor_visible:true,
+        ..Default::default()
+    })
+    .insert_resource(AppState {
+        ..Default::default()
+    })
     .add_plugins(DefaultPlugins)
-    .add_startup_system(setup)
-    .add_system(keyboard_input_system)
-    .add_system(mouse_input_system)
+    
+    .add_system(keyboard_system::keyboard_system)
+    .add_system(mouse_system::mouse_system)
+    
+    .add_system(window_system::window_system)
+
+
+    .add_event::<AppEvent>()
     .run();
 }
