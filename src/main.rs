@@ -79,13 +79,21 @@ fn keyboard_input_system(mut q:Query<PlayerEntity>, keyboard_input: Res<Input<Ke
 
 mod app_state;
 pub use app_state::*;
+use bevy_egui::EguiPlugin;
 
 // systems
 mod keyboard_system;
 mod mouse_system;
 mod window_system;
+mod ui_system;
+mod camera_system;
+mod startup_system;
+mod player_input_system;
+mod transform_system;
 
 // components
+mod player_input;
+pub use player_input::*;
 
 // resources
 
@@ -101,10 +109,17 @@ fn main() {
         ..Default::default()
     })
     .add_plugins(DefaultPlugins)
+    .add_plugin(EguiPlugin)
+
+    .add_startup_system(startup_system::startup_system)
     
     .add_system(keyboard_system::keyboard_system)
     .add_system(mouse_system::mouse_system)
+    .add_system(player_input_system::player_input_system)
+    .add_system(camera_system::camera_system)
+    .add_system(transform_system::player_transform_system)
     
     .add_system(window_system::window_system)
+    .add_system(ui_system::ui_system)
     .run();
 }

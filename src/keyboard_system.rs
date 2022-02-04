@@ -38,8 +38,6 @@ pub fn keyboard_system(
             }
 
             app_state.dpad = v;
-
-            println!("{:?}", app_state.dpad);
         }
     }
 }
