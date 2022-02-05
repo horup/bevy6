@@ -11,8 +11,7 @@ pub fn player_transform_system(mut q:Query<(&mut PlayerInput, &mut Transform, &m
 
         first_person.yaw += -player_input.dpad2.x * rot_speed * dt;
         first_person.pitch += -player_input.dpad2.y * rot_speed * dt;
-        first_person.pitch = first_person.pitch.clamp(-PI/2.0, PI/2.0);
-
+        first_person.pitch = first_person.pitch.clamp(-PI/2.1, PI/2.1);
 
         let forward = Quat::from_rotation_y(first_person.yaw) * Vec3::new(0.0, 0.0, -1.0);
         let right = Quat::from_rotation_y(first_person.yaw) * Vec3::new(1.0, 0.0, 0.0);
@@ -24,8 +23,7 @@ pub fn player_transform_system(mut q:Query<(&mut PlayerInput, &mut Transform, &m
         transform.look_at(target, Vec3::Y);
     
 
-        let v = forward * Vec3::new(player_input.dpad.x, 0.0, -player_input.dpad.y).normalize_or_zero();
-        transform.translation += v * move_speed * dt;
-
+        transform.translation += forward * player_input.dpad.y * dt * move_speed;
+        transform.translation += right * player_input.dpad.x * dt * move_speed;
     }
 }
