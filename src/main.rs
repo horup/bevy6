@@ -95,6 +95,9 @@ mod transform_system;
 mod player_input;
 pub use player_input::*;
 
+mod first_person;
+pub use first_person::*;
+
 // resources
 
 fn main() {

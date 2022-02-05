@@ -1,15 +1,16 @@
 use bevy::{prelude::{Commands, PerspectiveCameraBundle, Transform, Mesh, Color, shape, ResMut, Assets}, math::Vec3, pbr::{PbrBundle, StandardMaterial, PointLightBundle, PointLight}};
 
-use crate::PlayerInput;
+use crate::{PlayerInput, FirstPerson};
 
 pub fn startup_system(mut commands:Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>) {
      // camera
      commands.spawn_bundle(PerspectiveCameraBundle {
-        transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(-2.0, 2.5, 5.0),
         ..Default::default()
-    }).insert(PlayerInput::default());;
+    }).insert(FirstPerson::default())
+    .insert(PlayerInput::default());;
 
     // plane
     commands.spawn_bundle(PbrBundle {
