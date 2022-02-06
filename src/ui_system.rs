@@ -4,9 +4,9 @@ use bevy_egui::{
     EguiContext,
 };
 
-use crate::AppState;
+use crate::Global;
 
-pub fn ui_system(egui_context: ResMut<EguiContext>, app_state:Res<AppState>) {
+pub fn ui_system(egui_context: ResMut<EguiContext>, app_state:Res<Global>) {
     egui::Area::new("main")
         .fixed_pos(egui::pos2(16.0, 16.0))
         .show(egui_context.ctx(), |ui| {

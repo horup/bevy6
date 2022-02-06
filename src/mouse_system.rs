@@ -4,12 +4,12 @@ use bevy::{
     window::Windows, math::Vec2,
 };
 
-use crate::{AppState};
+use crate::{Global};
 
 pub fn mouse_system(
     mut mouse_button_input_events: EventReader<MouseButtonInput>, 
     mut mouse_motion_events: EventReader<MouseMotion>,
-    mut app_state:ResMut<AppState>
+    mut app_state:ResMut<Global>
 ) {
     for e in mouse_button_input_events.iter() {
         if e.button == MouseButton::Left && e.state == ElementState::Pressed {

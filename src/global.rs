@@ -1,14 +1,14 @@
 use bevy::math::Vec2;
 
 #[derive(Debug, Clone, Copy)]
-pub struct AppState {
+pub struct Global {
     pub simulation_speed:f32,
     pub input_locked:bool,
     pub dpad:Vec2,
     pub dpad2:Vec2
 }
 
-impl Default for AppState {
+impl Default for Global {
     fn default() -> Self {
         Self { 
             simulation_speed: 0.0,

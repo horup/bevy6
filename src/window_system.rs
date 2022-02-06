@@ -1,10 +1,10 @@
-use crate::{AppState};
+use crate::{Global};
 use bevy::{
     prelude::{EventReader, ResMut, DetectChanges},
     window::Windows,
 };
 
-pub fn window_system(app_state:ResMut<AppState>, mut windows: ResMut<Windows>) {
+pub fn window_system(app_state:ResMut<Global>, mut windows: ResMut<Windows>) {
     if let Some(primary) = windows.get_primary_mut() {
         if app_state.is_changed() {
             primary.set_cursor_visibility(!app_state.input_locked);

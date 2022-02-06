@@ -19,7 +19,6 @@ pub fn startup_system(mut commands:Commands,
         ..Default::default()
     });
 
-
     // cube
     commands.spawn_bundle(PbrBundle {
         mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
