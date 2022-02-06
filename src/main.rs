@@ -79,8 +79,8 @@ fn keyboard_input_system(mut q:Query<PlayerEntity>, keyboard_input: Res<Input<Ke
 
 mod global;
 pub use global::*;
-mod command;
-pub use command::*;
+mod global_command;
+pub use global_command::*;
 
 use bevy_egui::EguiPlugin;
 
@@ -118,7 +118,7 @@ fn main() {
     .insert_resource(Global {
         ..Default::default()
     })
-    .add_event::<Command>()
+    .add_event::<GlobalCommand>()
     .add_plugins(DefaultPlugins)
     .add_plugin(EguiPlugin)
 

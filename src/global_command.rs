@@ -1,4 +1,4 @@
-pub enum Command {
+pub enum GlobalCommand {
     /**Clear the world, removing all entities which  */
     ClearWorld,
     /**Save world to path */

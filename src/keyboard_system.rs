@@ -4,13 +4,13 @@ use bevy::{
     prelude::{EventReader, EventWriter, KeyCode, Res, ResMut},
 };
 
-use crate::{Global, Command};
+use crate::{Global, GlobalCommand};
 
 pub fn keyboard_system(
     mut keyboard_input_events: EventReader<KeyboardInput>,
     mut app_state: ResMut<Global>,
     keyboard_input: Res<Input<KeyCode>>,
-    mut command_writer:EventWriter<Command>
+    mut command_writer:EventWriter<GlobalCommand>
 ) {
     for e in keyboard_input_events.iter() {
         if let Some(key_code) = e.key_code {
@@ -43,11 +43,11 @@ pub fn keyboard_system(
 
         let quick_save_path = "quick.sav".into();
         if keyboard_input.just_pressed(KeyCode::F5) {
-            command_writer.send(Command::SaveWorld {
+            command_writer.send(GlobalCommand::SaveWorld {
                 path:quick_save_path
             })
         } else if keyboard_input.just_pressed(KeyCode::F9) {
-            command_writer.send(Command::LoadWorld {
+            command_writer.send(GlobalCommand::LoadWorld {
                 path:quick_save_path
             });
         }
