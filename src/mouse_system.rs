@@ -11,11 +11,19 @@ pub fn mouse_system(
     mut mouse_motion_events: EventReader<MouseMotion>,
     mut app_state:ResMut<Global>
 ) {
+
     for e in mouse_button_input_events.iter() {
-        if e.button == MouseButton::Left && e.state == ElementState::Pressed {
-            if app_state.input_locked == false {
-                app_state.input_locked = true;
+        if e.button == MouseButton::Right {
+            if e.state == ElementState::Pressed {
+                if app_state.input_locked == false {
+                    app_state.input_locked = true;
+                }
+            } else {
+                if app_state.input_locked == true {
+                    app_state.input_locked = false;
+                }
             }
+         
         }
     }
 

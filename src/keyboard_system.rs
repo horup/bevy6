@@ -23,7 +23,7 @@ pub fn keyboard_system(
     }
 
     app_state.dpad = Vec2::default();
-    if app_state.input_locked {
+    //if app_state.input_locked {
         let mut v = Vec2::default();
         if keyboard_input.pressed(KeyCode::A) {
             v.x -= 1.0;
@@ -51,6 +51,6 @@ pub fn keyboard_system(
                 path:quick_save_path
             });
         }
-    }
+    //}
     
 }

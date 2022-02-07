@@ -1,9 +1,10 @@
-use bevy::prelude::EventReader;
+use bevy::{prelude::{EventReader, World}, app::Events};
 
 use crate::GlobalCommand;
 
-pub fn persist_system(mut command_reader:EventReader<GlobalCommand>) {
-    for e in command_reader.iter() {
+pub fn persist_system(world:&mut World) {
+    let events = world.get_resource::<Events<GlobalCommand>>().unwrap();
+    for e in events.get_reader().iter(events) {
         match e {
             GlobalCommand::SaveWorld { path } => {
                 println!("save");

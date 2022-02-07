@@ -132,6 +132,6 @@ fn main() {
     
     .add_system(window_system::window_system)
     .add_system(ui_system::ui_system)
-    .add_system(persist_system::persist_system)
+    .add_system(persist_system::persist_system.exclusive_system())
     .run();
 }
