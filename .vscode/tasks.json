@@ -4,7 +4,10 @@
 		{
 			"type": "cargo",
 			"command": "run",
-			"args": ["--features", "bevy/dynamic"],
+			"args": [
+				"--features",
+				"bevy/dynamic"
+			],
 			"problemMatcher": [
 				"$rustc"
 			],
@@ -13,6 +16,13 @@
 				"isDefault": true
 			},
 			"label": "rust: cargo run"
+		},
+		{
+			"type": "process",
+			"command": "wasm-pack",
+			"args": ["build", "-t", "web"],
+			"label": "wasm-pack build",
+			"problemMatcher": []
 		}
 	]
 }
