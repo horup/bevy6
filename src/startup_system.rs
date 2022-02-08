@@ -10,7 +10,7 @@ pub fn startup_system(mut commands:Commands,
         transform: Transform::from_xyz(-2.0, 2.5, 5.0),
         ..Default::default()
     }).insert(FirstPerson::default())
-    .insert(PlayerInput::default());;
+    .insert(PlayerInput::default());
 
     // plane
     commands.spawn_bundle(PbrBundle {
