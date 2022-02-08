@@ -1,4 +1,3 @@
-#![allow(warnings)]
 use wasm_bindgen::prelude::*;
 use bevy::{prelude::*, input::mouse::MouseButtonInput};
 mod global;
