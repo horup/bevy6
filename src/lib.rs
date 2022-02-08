@@ -1,5 +1,5 @@
 use wasm_bindgen::prelude::*;
-use bevy::{prelude::*, input::mouse::MouseButtonInput};
+use bevy::{prelude::*};
 mod global;
 pub use global::*;
 mod global_command;

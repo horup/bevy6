@@ -1,4 +1,4 @@
-use bevy::prelude::{Res, Transform, Query};
+use bevy::prelude::{Res, Query};
 use crate::{Global, PlayerInput};
 
 pub fn player_input_system(app_state:Res<Global>, mut player_inputs:Query<&mut PlayerInput>) {

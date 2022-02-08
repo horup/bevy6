@@ -1,7 +1,6 @@
 use bevy::{
     input::{mouse::{MouseButtonInput, MouseMotion}, ElementState},
-    prelude::{EventReader, ResMut, MouseButton, EventWriter},
-    window::Windows, math::Vec2,
+    prelude::{EventReader, ResMut, MouseButton}, math::Vec2,
 };
 
 use crate::{Global};

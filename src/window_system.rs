@@ -1,6 +1,6 @@
 use crate::{Global};
 use bevy::{
-    prelude::{EventReader, ResMut, DetectChanges},
+    prelude::{ResMut, DetectChanges},
     window::Windows, math::Vec2,
 };
 

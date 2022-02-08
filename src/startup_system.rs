@@ -1,4 +1,4 @@
-use bevy::{prelude::{Commands, PerspectiveCameraBundle, Transform, Mesh, Color, shape, ResMut, Assets}, math::Vec3, pbr::{PbrBundle, StandardMaterial, PointLightBundle, PointLight}};
+use bevy::{prelude::{Commands, PerspectiveCameraBundle, Transform, Mesh, Color, shape, ResMut, Assets}, pbr::{PbrBundle, StandardMaterial, PointLightBundle, PointLight}};
 
 use crate::{PlayerInput, FirstPerson};
 

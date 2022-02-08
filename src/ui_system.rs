@@ -1,6 +1,6 @@
 use bevy::prelude::{ResMut, Res};
 use bevy_egui::{
-    egui::{self, pos2},
+    egui::{self},
     EguiContext,
 };
 

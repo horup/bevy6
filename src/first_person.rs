@@ -1,4 +1,4 @@
-use bevy::{math::Vec3, prelude::Component};
+use bevy::{prelude::Component};
 
 #[derive(Component, Clone, Copy)]
 pub struct FirstPerson {
